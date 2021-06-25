@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Portfolio.Logic\Portfolio.Logic.csproj" />
+    <ProjectReference Include="..\Portfolio.ML_Models\Portfolio.ML_Models.csproj" />
   </ItemGroup>
 
 

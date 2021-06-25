@@ -7,7 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Portfolio.Logic;
 using Portfolio.Logic.Interfaces;
-using Portfolio.Data;
+using Portfolio.API.Extensions;
 
 namespace Portfolio.API
 {
@@ -25,10 +25,7 @@ namespace Portfolio.API
         {
             services.AddControllers();
 
-            services.AddPredictionEnginePool<SentimentData, SentimentPrediction>()
-                .FromFile(modelName: "SentimentAnalysisModel", filePath: "Models/sentiment_model.zip", watchForChanges: true);
-
-            services.AddTransient<ISentimentAnalysisLogic, SentimentAnalysisLogic>();
+            services.AddPortfolioServices();
 
             services.AddSwaggerGen(s =>
             {
