@@ -2,8 +2,10 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.ML;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ML_Models.Data;
 using Portfolio.Logic;
 using Portfolio.Logic.Interfaces;
 
@@ -22,6 +24,9 @@ namespace Portfolio.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddPredictionEnginePool<SentimentData, SentimentPrediction>()
+                .FromFile(modelName: "SentimentAnalysisModel", filePath: "Models/sentiment_model.zip", watchForChanges: true);
 
             services.AddTransient<ISentimentAnalysisLogic, SentimentAnalysisLogic>();
 
