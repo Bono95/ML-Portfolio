@@ -10,23 +10,16 @@ namespace Portfolio.API.Controllers
     [ApiController]
     public class SentimentAnalysisController : ControllerBase
     {
-        //private readonly ISentimentAnalysisLogic _sentimentAnalysisLogic;
-        private readonly PredictionEnginePool<SentimentData, SentimentPrediction> _predictionEnginePool;
+        private readonly ISentimentAnalysisLogic _sentimentAnalysisLogic;
 
-        public SentimentAnalysisController(ISentimentAnalysisLogic sentimentAnalysisLogic, PredictionEnginePool<SentimentData, SentimentPrediction> predictionEnginePool)
+        public SentimentAnalysisController(ISentimentAnalysisLogic sentimentAnalysisLogic)
         {
-            //_sentimentAnalysisLogic = sentimentAnalysisLogic;
-            _predictionEnginePool = predictionEnginePool;
+            _sentimentAnalysisLogic = sentimentAnalysisLogic;
         }
 
         [HttpPost]
         public ActionResult AnalyzeText([FromBody] string text)
         {
-            SentimentData data = new SentimentData
-            {
-                SentimentText = text
-            };
-
             if(text == null)
             {
                 return BadRequest("Invalid text to analyze");
@@ -37,11 +30,7 @@ namespace Portfolio.API.Controllers
                 return BadRequest("Model state is invalid");
             }
 
-            SentimentPrediction prediction = _predictionEnginePool.Predict(modelName: "SentimentAnalysisModel", example: data);
-
-            string sentiment = Convert.ToBoolean(prediction.Prediction) ? "Positive" : "Negative";
-
-            return Ok(sentiment);
+            return Ok(_sentimentAnalysisLogic.AnalyzeText(text));
         }
     }
 }
