@@ -2,11 +2,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.ML;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Portfolio.Logic;
-using Portfolio.Logic.Interfaces;
 using Portfolio.API.Extensions;
 
 namespace Portfolio.API

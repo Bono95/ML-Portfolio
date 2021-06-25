@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.ML;
 using Portfolio.Logic.Interfaces;
-using Portfolio.ML_Models.Data;
-using System;
 
 namespace Portfolio.API.Controllers
 {

@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.ML;
 using Portfolio.ML_Models.Data;
-using System.IO;
-using System.Reflection;
 
 namespace Portfolio.ML_Models.Extensions
 {
