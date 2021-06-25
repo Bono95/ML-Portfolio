@@ -5,9 +5,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.ML;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using ML_Models.Data;
 using Portfolio.Logic;
 using Portfolio.Logic.Interfaces;
+using Portfolio.Data;
 
 namespace Portfolio.API
 {

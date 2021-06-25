@@ -1,6 +1,6 @@
 ﻿using Microsoft.ML.Data;
 
-namespace ML_Models.Data
+namespace Portfolio.Data
 {
     public class SentimentData
     {

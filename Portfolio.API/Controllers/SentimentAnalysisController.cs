@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.ML;
-using ML_Models.Data;
+using Portfolio.Data;
 using Portfolio.Logic.Interfaces;
 using System;
 
