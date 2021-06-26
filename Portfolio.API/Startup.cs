@@ -4,8 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Portfolio.Logic;
-using Portfolio.Logic.Interfaces;
+using Portfolio.API.Extensions;
 
 namespace Portfolio.API
 {
@@ -23,7 +22,7 @@ namespace Portfolio.API
         {
             services.AddControllers();
 
-            services.AddTransient<ISentimentAnalysisLogic, SentimentAnalysisLogic>();
+            services.AddPortfolioServices();
 
             services.AddSwaggerGen(s =>
             {

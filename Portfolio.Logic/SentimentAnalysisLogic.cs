@@ -1,15 +1,26 @@
-﻿using Portfolio.Logic.Interfaces;
+﻿using Microsoft.Extensions.ML;
+using Portfolio.Logic.Interfaces;
+using Portfolio.ML_Models.Data;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Portfolio.Logic
 {
     public class SentimentAnalysisLogic : ISentimentAnalysisLogic
     {
-        public string AnalyzeText(string text)
+        private readonly PredictionEnginePool<SentimentData, SentimentPrediction> _predictionEnginePool;
+
+        public SentimentAnalysisLogic(PredictionEnginePool<SentimentData, SentimentPrediction> predictionEnginePool)
         {
-            return "That sounds bad, man.";
+            _predictionEnginePool = predictionEnginePool;
+        }
+
+        public string AnalyzeText(SentimentData data)
+        {
+            SentimentPrediction prediction = _predictionEnginePool.Predict(modelName: "SentimentAnalysisModel", example: data);
+
+            string sentiment = Convert.ToBoolean(prediction.Prediction) ? "Positive" : "Negative";
+
+            return sentiment;
         }
     }
 }

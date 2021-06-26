@@ -5,11 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.ML" Version="1.5.5" />
+    <PackageReference Include="Microsoft.ML" Version="1.5.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.1.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Portfolio.Logic\Portfolio.Logic.csproj" />
+    <ProjectReference Include="..\Portfolio.ML_Models\Portfolio.ML_Models.csproj" />
   </ItemGroup>
 
 

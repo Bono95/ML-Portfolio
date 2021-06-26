@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -6,10 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Portfolio.ML_Models\Portfolio.ML_Models.csproj" />
+    <PackageReference Include="Microsoft.Extensions.ML" Version="1.5.5" />
+    <PackageReference Include="Microsoft.ML" Version="1.5.5" />
   </ItemGroup>
 
 </Project>
