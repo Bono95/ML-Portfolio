@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Portfolio.Logic.Interfaces;
+using Portfolio.ML_Models.Data;
 
 namespace Portfolio.API.Controllers
 {
@@ -15,9 +16,9 @@ namespace Portfolio.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult AnalyzeText([FromBody] string text)
+        public ActionResult AnalyzeText([FromBody] SentimentData data)
         {
-            if(text == null)
+            if(data == null)
             {
                 return BadRequest("Invalid text to analyze");
             }
@@ -27,7 +28,7 @@ namespace Portfolio.API.Controllers
                 return BadRequest("Model state is invalid");
             }
 
-            return Ok(_sentimentAnalysisLogic.AnalyzeText(text));
+            return Ok(_sentimentAnalysisLogic.AnalyzeText(data));
         }
     }
 }

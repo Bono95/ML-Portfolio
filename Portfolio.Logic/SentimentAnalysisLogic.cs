@@ -14,13 +14,8 @@ namespace Portfolio.Logic
             _predictionEnginePool = predictionEnginePool;
         }
 
-        public string AnalyzeText(string text)
+        public string AnalyzeText(SentimentData data)
         {
-            SentimentData data = new SentimentData
-            {
-                SentimentText = text
-            };
-
             SentimentPrediction prediction = _predictionEnginePool.Predict(modelName: "SentimentAnalysisModel", example: data);
 
             string sentiment = Convert.ToBoolean(prediction.Prediction) ? "Positive" : "Negative";
